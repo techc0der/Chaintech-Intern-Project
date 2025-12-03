@@ -95,7 +95,7 @@ const Profile = () => {
               {/* Edit Icon Button */}
               <button 
                 onClick={handleEditClick}
-                className="opacity-0 group-hover:opacity-100 transition-opacity text-indigo-400 hover:text-indigo-300"
+                className="opacity-0 group-hover:opacity-100 transition-opacity text-indigo-200 hover:text-indigo-100"
                 title="Edit Name"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
