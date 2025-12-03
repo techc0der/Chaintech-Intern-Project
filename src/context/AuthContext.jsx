@@ -41,7 +41,23 @@ export default function AuthProvider({ children }) {
         return () => { mounted = false; };
     }, []);
 
-
+    async function updateUser({name}) {
+        try {
+            const res = await api.put('/api/auth/profile', { name });
+            if (res.data && res.data.user) {
+                setUser({
+                    id: res.data.user.id || res.data.user._id || '',
+                    name: res.data.user.name || '',
+                    email: res.data.user.email || ''
+                });
+                localStorage.setItem("auth_user", JSON.stringify(res.data.user));
+            }
+            return res.data;
+        } catch (error) {
+            setError(error?.response?.data?.message || error.message || 'Update user failed');
+            throw error;
+        }
+    }
 
     async function resetPassword({ email, otpString, password }) {
         console.log(email, otpString, password);
@@ -131,7 +147,24 @@ export default function AuthProvider({ children }) {
             throw error;
         }
     }
-
+    
+    async function updateUser(updates) {
+        try {
+            const res = await api.put('/api/profile', updates);
+            if (res.data && res.data.user) {
+                setUser({
+                    id: res.data.user.id || res.data.user._id || '',
+                    name: res.data.user.name || '',
+                    email: res.data.user.email || ''
+                });
+                localStorage.setItem("auth_user", JSON.stringify(res.data.user));
+            }
+            return res.data.user;
+        } catch (error) {
+            setError(error?.response?.data?.message || error.message || 'Update user failed');
+            throw error;
+        }
+    }   
 
     async function sendOTP(payload) {
         try {
@@ -176,6 +209,7 @@ export default function AuthProvider({ children }) {
         verifyOtp,
         requestPasswordReset,
         resetPassword,
+        updateUser,
         isAuthenticated: Boolean(user),
     }), [user, loading, error, otp, showOTP]);
     return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
