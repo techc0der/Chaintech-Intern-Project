@@ -5,10 +5,11 @@ import { useAuth } from '../context/AuthContext';
 import { use } from 'react';
 
 const VerifyOTP = ({ isDark, labelTextClass, inputBgClass, inputFocusClass }) => {
-    const { otp, setOtp } = useAuth();
+    const { otp, setOtp,setError } = useAuth();
     const inputRefs = useRef([]);
     useEffect(() => {
         setOtp(Array(6).fill(''));
+        setError(null);
     }, []);
 
     if (!Array.isArray(otp)) return null;
