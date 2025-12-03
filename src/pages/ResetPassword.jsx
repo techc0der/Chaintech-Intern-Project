@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
@@ -13,6 +13,11 @@ const ResetPassword = () => {
     const navigate = useNavigate();
 
     const { showOTP, setShowOTP, error, setError, requestPasswordReset, otp, setOtp, resendOtp, resetPassword } = useAuth();
+
+    useEffect(() => {
+        setOtp(new Array(6).fill(''));
+        setError(null);
+    }, []);
 
     async function resendOTP(e) {
         e.preventDefault();
