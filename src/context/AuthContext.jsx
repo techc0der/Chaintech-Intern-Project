@@ -148,23 +148,7 @@ export default function AuthProvider({ children }) {
         }
     }
     
-    async function updateUser(updates) {
-        try {
-            const res = await api.put('/api/profile', updates);
-            if (res.data && res.data.user) {
-                setUser({
-                    id: res.data.user.id || res.data.user._id || '',
-                    name: res.data.user.name || '',
-                    email: res.data.user.email || ''
-                });
-                localStorage.setItem("auth_user", JSON.stringify(res.data.user));
-            }
-            return res.data.user;
-        } catch (error) {
-            setError(error?.response?.data?.message || error.message || 'Update user failed');
-            throw error;
-        }
-    }   
+
 
     async function sendOTP(payload) {
         try {

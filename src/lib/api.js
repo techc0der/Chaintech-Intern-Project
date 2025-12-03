@@ -3,6 +3,7 @@ import axios from 'axios';
 
 const api = axios.create({
   baseURL: 'https://chaintech-intern-project-backend.onrender.com', 
+  // baseURL: 'http://localhost:4000',
 });
 
 export function setAuthToken(token) {
