@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { use } from 'react';
 
 const VerifyOTP = ({ isDark, labelTextClass, inputBgClass, inputFocusClass }) => {
     const { otp, setOtp } = useAuth();
     const inputRefs = useRef([]);
+    useEffect(() => {
+        setOtp(Array(6).fill(''));
+    }, []);
 
     if (!Array.isArray(otp)) return null;
 
