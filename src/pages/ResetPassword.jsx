@@ -57,7 +57,7 @@ const ResetPassword = () => {
 
         }
     }
-    // Dynamic Tailwind Classes based on the theme state
+   
     const cardBgClass = isDark ? 'bg-gray-800 shadow-xl shadow-indigo-500/10' : 'bg-white shadow-xl shadow-gray-300/50';
     const titleTextClass = isDark ? 'text-white' : 'text-gray-900';
     const labelTextClass = isDark ? 'text-gray-300' : 'text-gray-700';
@@ -70,12 +70,7 @@ const ResetPassword = () => {
         <div className="flex min-h-[calc(100vh-68px)] flex-col justify-center px-6 py-12 lg:px-8">
             <div className={`sm:mx-auto sm:w-full sm:max-w-sm p-8 rounded-xl transition-colors duration-300 ${cardBgClass}`}>
                 <div className="sm:mx-auto sm:w-full sm:max-w-sm text-center">
-                    {/* Logo/Icon is adapted to the theme */}
-                    <img
-                        src={`https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=${isDark ? '400' : '600'}`}
-                        alt="Your Company"
-                        className="mx-auto h-10 w-auto"
-                    />
+    
                     <h2 className={`mt-6 text-center text-2xl font-bold tracking-tight transition-colors ${titleTextClass}`}>
                         Reset your password
                     </h2>
